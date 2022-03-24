@@ -3,7 +3,9 @@ import React, { useState } from "react";
 function Card({ content }) {
   const [flipCard, setFlipCard] = useState(false);
   const toggleFlip = (e) => {
-    setFlipCard(!flipCard);
+    if (!flipCard) {
+      setFlipCard(!flipCard);
+    }
   };
   return (
     <div className="scene">

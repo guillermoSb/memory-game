@@ -7,6 +7,19 @@ function App() {
       <Card content="😄"></Card>
       <Card content="😄"></Card>
       <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
+      <Card content="😄"></Card>
     </div>
   );
 }
