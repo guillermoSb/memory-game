@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Card from "./Card";
 
 function App() {
-    return (
-        <div>App</div>
-    )
+  return (
+    <div className="card-container">
+      <Card content="😄"></Card>
+    </div>
+  );
 }
 
-export default App
+export default App;

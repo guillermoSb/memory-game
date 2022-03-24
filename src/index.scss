@@ -2,3 +2,24 @@
   padding: 0px;
   margin: 0px;
 }
+
+.card {
+  background-color: orangered;
+  min-width: 100px;
+  min-height: 150px;
+
+  border-radius: 1rem;
+  padding: 10px;
+  font-size: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
