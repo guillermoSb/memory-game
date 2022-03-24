@@ -3,18 +3,45 @@
   margin: 0px;
 }
 
+.scene {
+  perspective: 400px;
+}
+
 .card {
-  background-color: orangered;
   min-width: 100px;
   min-height: 150px;
+  position: relative;
 
-  border-radius: 1rem;
-  padding: 10px;
-  font-size: 3rem;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: transform 1s;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
+
+  &--flip {
+    transform: rotateY(-180deg);
+  }
+
+  &__face {
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    &--front {
+      background: white;
+      border: 1px solid red;
+    }
+    &--back {
+      background: red;
+      transform: rotateY(180deg);
+    }
+  }
 }
 
 .card-container {
