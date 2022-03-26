@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 
-function Card({ content }) {
-  const [flipCard, setFlipCard] = useState(false);
-  const toggleFlip = (e) => {
-    if (!flipCard) {
-      setFlipCard(!flipCard);
-    }
-  };
+function Card({ card, onClick, index }) {
   return (
     <div className="scene">
       <div
-        className={`card ${flipCard ? "card--flip" : ""}`}
-        onClick={toggleFlip}
+        className={`card ${card.isFaceUp ? "card--flip" : ""} ${card.isMatched ? "card--matched" : ""}`}
+        onClick={() => onClick(index)}
       >
-        <div className="card__face card__face--front">{content}</div>
+        <div className="card__face card__face--front">{card.content}</div>
         <div className="card__face card__face--back"></div>
       </div>
     </div>

@@ -16,12 +16,16 @@
 
   transform-style: preserve-3d;
   transform-origin: center center;
-  transition: transform 1s;
+  transition: transform 0.5s;
 
   cursor: pointer;
 
   &--flip {
     transform: rotateY(-180deg);
+  }
+
+  &--matched {
+    transform: scale(0.01);
   }
 
   &__face {

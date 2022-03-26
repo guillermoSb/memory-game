@@ -1,26 +1,10 @@
 import React from "react";
 import Card from "./Card";
+import Game from "./Game";
 
 function App() {
   return (
-    <div className="card-container">
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-      <Card content="😄"></Card>
-    </div>
+    <Game />
   );
 }
 
