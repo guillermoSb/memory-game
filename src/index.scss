@@ -20,8 +20,16 @@
 
   cursor: pointer;
 
+  & .card__face p {
+    transition: 0.55s all ease-in-out;
+    transform: scale(0.001) rotate(0deg);
+  }
+
   &--flip {
     transform: rotateY(-180deg);
+    & .card__face p {
+      transform: scale(1) rotate(360deg);
+    }
   }
 
   &--matched {

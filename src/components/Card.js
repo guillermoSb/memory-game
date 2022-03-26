@@ -7,7 +7,9 @@ function Card({ card, onClick, index }) {
         className={`card ${card.isFaceUp ? "card--flip" : ""} ${card.isMatched ? "card--matched" : ""}`}
         onClick={() => onClick(index)}
       >
-        <div className="card__face card__face--front">{card.content}</div>
+        <div className="card__face card__face--front">
+          <p>{card.content}</p>
+        </div>
         <div className="card__face card__face--back"></div>
       </div>
     </div>
