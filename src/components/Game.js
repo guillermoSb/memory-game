@@ -34,7 +34,7 @@ function Game() {
             cardCollection.push(card);
         }
 
-        return shuffle(cardCollection);
+        return cardCollection;
     }
 
     /**
@@ -42,27 +42,24 @@ function Game() {
      * @param {number} index 
      */
     const toggleFlip = (index) => {
+        let cardMatched = false;
         // Do not allow to flip the card back
         if (gameContent[index].isFaceUp || gameContent[index].isMatched) {
             return;
         }
-        // Set the game state
         if (currentFaceUpCard === -1) {
-            setCurrentFaceUpCard(index);
-            console.log('NO CURRENT', currentFaceUpCard)
+            setCurrentFaceUpCard(index);    // Set the new current face up card   
         } else {
             // Check for a match
-            if (gameContent[index].content === gameContent[currentFaceUpCard].content) {
-
-            } else {
-                setCurrentFaceUpCard(-1);
-            }
+            cardMatched = gameContent[index].content === gameContent[currentFaceUpCard].content
+            setCurrentFaceUpCard(-1);
         }
         // Set the new game content
         setGameContent(gameContent.map((card, idx) => {
             return {
                 ...card,
-                isFaceUp: idx === index ? !card.isFaceUp : card.isFaceUp
+                isFaceUp: idx === index ? !card.isFaceUp : card.isFaceUp,
+                isMatched: (cardMatched && (idx === index || idx === currentFaceUpCard)) || card.isMatched
             }
         }))
 

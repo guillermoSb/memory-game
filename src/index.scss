@@ -33,7 +33,10 @@
   }
 
   &--matched {
-    transform: scale(0.01);
+    animation: dissapear 0.5s;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
   }
 
   &__face {
@@ -67,10 +70,20 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   // display: flex;
-  row-gap: 10px;
+  row-gap: 20px;
   column-gap: 20px;
 
   align-items: center;
   justify-items: center;
   height: 100vh;
+}
+
+// Animation for card removal
+@keyframes dissapear {
+  0% {
+    transform: scale(1) rotateY(180deg);
+  }
+  100% {
+    transform: scale(0) rotateY(180deg);
+  }
 }
