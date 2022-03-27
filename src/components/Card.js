@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Card({ card, onClick, index }) {
+
   return (
     <div className="scene">
       <div
@@ -12,7 +13,7 @@ function Card({ card, onClick, index }) {
         </div>
         <div className="card__face card__face--back"></div>
       </div>
-    </div>
+    </div >
   );
 }
 

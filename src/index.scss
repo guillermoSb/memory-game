@@ -3,6 +3,10 @@
   margin: 0px;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 .scene {
   perspective: 700px;
   width: 100%;
@@ -65,17 +69,27 @@
   }
 }
 
+.game {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  & > * {
+    padding: 20px;
+  }
+  & h1 {
+    text-align: center;
+  }
+}
 .card-container {
   display: grid;
+  flex: 1; // Expand into the entire grid
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   // display: flex;
   row-gap: 20px;
   column-gap: 20px;
-
   align-items: center;
   justify-items: center;
-  height: 100vh;
 }
 
 // Animation for card removal

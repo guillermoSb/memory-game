@@ -7,12 +7,22 @@ function Game() {
     const [gameContent, setGameContent] = useState([]);
     const [gameStarted, setGameStarted] = useState(false);
     const [currentFaceUpCard, setCurrentFaceUpCard] = useState(-1);
+    const [score, setScore] = useState(0);  // Game score
 
     useEffect(() => {
         if (!gameStarted) {
             const cardPairs = createPairs();  // Create card pairs
             setGameContent(cardPairs);  // Set the initial content
             setGameStarted(true);   // Set an indicator that the game has started to avoid infinite loops
+        }
+        // Check for cards to flip back
+        if (currentFaceUpCard === -1 && gameContent.filter(card => card.isFaceUp && !card.isMatched).length == 2) {
+            setGameContent(gameContent.map((card) => {
+                return {
+                    ...card,
+                    isFaceUp: card.isMatched
+                }
+            }))
         }
     }, [gameContent])
 
@@ -47,8 +57,9 @@ function Game() {
         if (gameContent[index].isFaceUp || gameContent[index].isMatched) {
             return;
         }
+        setScore(score + 1);    // Increment the score
         if (currentFaceUpCard === -1) {
-            setCurrentFaceUpCard(index);    // Set the new current face up card   
+            setCurrentFaceUpCard(index);    // Set the new current face up card
         } else {
             // Check for a match
             cardMatched = gameContent[index].content === gameContent[currentFaceUpCard].content
@@ -62,16 +73,18 @@ function Game() {
                 isMatched: (cardMatched && (idx === index || idx === currentFaceUpCard)) || card.isMatched
             }
         }))
-
     };
 
     return (
-        <div className="card-container">
-            {gameContent.map((card, index) => {
-                return (
-                    <Card key={index} card={card} index={index} onClick={toggleFlip} />
-                );
-            })}
+        <div className='game'>
+            <h1>Movimientos {score}</h1>
+            <div className="card-container">
+                {gameContent.map((card, index) => {
+                    return (
+                        <Card key={index} card={card} index={index} onClick={toggleFlip} />
+                    );
+                })}
+            </div>
         </div>
     );
 }
