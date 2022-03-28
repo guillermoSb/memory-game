@@ -43,9 +43,21 @@ function Main() {
           Este es un juego de memoria. Tienes que encontrar todos los pares de
           emojis para ganar. ¡Intenta superar tu record!
         </p>
-        <button className="main__button" onClick={startGame}>
-          ¡Empezar!
-        </button>
+        <div className="main__action">
+          <button className="main__button" onClick={startGame}>
+            ¡Empezar!
+          </button>
+          <a
+            className="main__action-github"
+            href="https://github.com/guillermoSb/web-lab08"
+            target={"_blank"}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+              alt="Github Icon"
+            />
+          </a>
+        </div>
       </div>
       <div className="main__card">
         <Card card={card} onClick={flipCard}></Card>
