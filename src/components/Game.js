@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { theme } from '../utils/cardLibrary';
 import { shuffle } from '../utils/shuffle';
 import Card from './Card'
 
 function Game() {
-    const theme = ["😄", "😈", "😜", "🤨", "😖", "😎", "🥸"];
+
     const [gameContent, setGameContent] = useState([]);
     const [gameStarted, setGameStarted] = useState(false);
     const [currentFaceUpCard, setCurrentFaceUpCard] = useState(-1);

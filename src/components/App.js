@@ -1,10 +1,9 @@
 import React from "react";
-import Card from "./Card";
-import Game from "./Game";
+import Main from "./Main";
 
 function App() {
   return (
-    <Game />
+    <Main />
   );
 }
 
