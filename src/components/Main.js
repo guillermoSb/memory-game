@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+
 import { theme } from "../utils/cardLibrary";
 import Card from "./Card";
+
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [card, setCard] = useState({
@@ -8,6 +11,8 @@ function Main() {
     content: "😄",
     isMatched: false,
   });
+
+  const navigate = useNavigate();
 
   const flipCard = () => {
     // Pick random card
@@ -25,7 +30,9 @@ function Main() {
     });
   };
 
-  const startGame = () => {};
+  const startGame = () => {
+    return navigate("/game");
+  };
 
   return (
     <div className="main">
