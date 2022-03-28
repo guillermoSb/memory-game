@@ -44,7 +44,7 @@ function Game() {
             cardCollection.push(card);
         }
 
-        return cardCollection;
+        return shuffle(cardCollection);
     }
 
     /**
@@ -69,6 +69,7 @@ function Game() {
         setGameContent(gameContent.map((card, idx) => {
             return {
                 ...card,
+                prevFaceUp: card.isFaceUp,
                 isFaceUp: idx === index ? !card.isFaceUp : card.isFaceUp,
                 isMatched: (cardMatched && (idx === index || idx === currentFaceUpCard)) || card.isMatched
             }

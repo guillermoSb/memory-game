@@ -30,6 +30,9 @@ body {
   }
 
   &--flip {
+    &--delayed {
+      transition-delay: 1s;
+    }
     transform: rotateY(-180deg);
     & .card__face p {
       transform: scale(1) rotate(360deg);
