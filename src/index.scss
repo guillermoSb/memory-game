@@ -133,22 +133,29 @@ body {
     color: white;
     font-weight: bold;
     letter-spacing: 1.5px;
-    transition: all 0.2s;
     font-size: 15px;
-    &:hover {
-      background-color: rgba($color: red, $alpha: 0.8);
-      box-shadow: 0px 3px 10px 3px rgba(black, 0.1);
-      cursor: pointer;
-    }
-    &:active {
-      background-color: red;
-    }
   }
   &__action {
     display: flex;
     align-items: center;
+    & > * {
+      transition: all 0.2s;
+    }
     & > :not(:last-child) {
       margin-right: 12px;
+    }
+    & > :hover {
+      cursor: pointer;
+      box-shadow: 0px 3px 10px 3px rgba(black, 0.1);
+    }
+    & > button:hover {
+      background-color: rgba($color: red, $alpha: 0.8);
+    }
+    & > button:active {
+      background-color: red;
+    }
+    & > a:hover {
+      border-radius: 100%;
     }
     &-github {
       height: 30px;
