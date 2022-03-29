@@ -4,6 +4,8 @@
 
 ## Guillermo Santos Barrios - 191517
 
+Ver proyecto https://guillermosb.github.io/web-lab08
+
 # TODO
 
 - ✅ Mostrar una tarjeta y permitir que de vueltas.
