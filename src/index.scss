@@ -46,6 +46,9 @@ body {
 
   &__face {
     border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -o-border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,6 +57,9 @@ body {
     height: 100%;
     font-size: 3rem;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
     transform-style: preserve-3d;
     &--front {
       background: white;
