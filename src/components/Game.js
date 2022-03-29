@@ -49,7 +49,7 @@ function Game() {
             cardCollection.push(card);
         }
 
-        return cardCollection;
+        return shuffle(cardCollection);
     }
 
     /**
