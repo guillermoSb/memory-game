@@ -10,4 +10,4 @@
 - ✅ Permitir al usuario hacer match de dos tarjetas.
 - ✅ Llevar un score de las tarjetas que el usuario haya hecho match. (contar movimientos)
 - ✅ Mostrar las tarjetas en una posición random
-- Permitir iniciar un nuevo juego
+- ✅ Permitir iniciar un nuevo juego
