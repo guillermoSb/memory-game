@@ -41,7 +41,9 @@ function Main() {
         <h2>Por: Guillermo Santos</h2>
         <p>
           Este es un juego de memoria. Tienes que encontrar todos los pares de
-          emojis para ganar. ¡Intenta superar tu record!
+          emojis para ganar. ¡Intenta superar tu mejor puntaje!
+          <br></br>
+          <strong> MEJOR PUNTAJE: {(localStorage.getItem('record') ?? 0) === 0 ? '-' : localStorage.getItem('record')}</strong>
         </p>
         <div className="main__action">
           <button className="main__button" onClick={startGame}>

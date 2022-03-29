@@ -25,6 +25,15 @@ function Game() {
                 }
             }))
         }
+
+        if (gameContent.filter(card => !card.isMatched).length === 0 && gameStarted) {
+            const prevRecord = Number(localStorage.getItem('record'));  // Get the previous record
+            if (score < prevRecord || prevRecord === 0) {
+                localStorage.setItem('record', JSON.stringify(score));
+            }
+            alert(`¡Has terminado! Tu puntaje es ${score}`)
+
+        }
     }, [gameContent])
 
 
@@ -45,7 +54,7 @@ function Game() {
             cardCollection.push(card);
         }
 
-        return shuffle(cardCollection);
+        return cardCollection;
     }
 
     /**
