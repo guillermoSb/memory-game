@@ -63,7 +63,7 @@ function Main() {
       </div>
       <div className="main__card">
         <Card card={card} onClick={flipCard}></Card>
-        <p>Puedes voltear las tarjetas dándoles click</p>
+        <p>Puedes voltear las tarjetas dándoles <strong>CLICK</strong></p>
       </div>
     </div>
   );
