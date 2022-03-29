@@ -19,16 +19,6 @@ function Game() {
         if (!gameStarted) {
             restartGame();
         }
-        // Check for cards to flip back
-        if (currentFaceUpCard === -1 && gameContent.filter(card => card.isFaceUp && !card.isMatched).length == 2) {
-            setGameContent(gameContent.map((card) => {
-                return {
-                    ...card,
-                    isFaceUp: card.isMatched
-                }
-            }))
-        }
-
         if (gameContent.filter(card => !card.isMatched).length === 0 && gameStarted) {
             const prevRecord = Number(localStorage.getItem('record'));  // Get the previous record
             if (score < prevRecord || prevRecord === 0) {
@@ -53,7 +43,7 @@ function Game() {
             const card = {
                 content: item,
                 isFaceUp: false,
-                isMatched: false
+                isMatched: false,
             }
             cardCollection.push(card);
             cardCollection.push(card);
@@ -67,29 +57,82 @@ function Game() {
      * @param {number} index 
      */
     const toggleFlip = (index) => {
-        let cardMatched = false;
         // Do not allow to flip the card back
-        if (gameContent[index].isFaceUp || gameContent[index].isMatched) {
+
+        if (gameContent[index].isFaceUp || gameContent[index].isMatched ||
+            gameContent.filter((card) => card.isFaceUp && !card.isMatched).length >= 2) {
             return;
         }
-        setScore(score + 1);    // Increment the score
+        flipCard(index);
+        // Check if there is already a card face up
         if (currentFaceUpCard === -1) {
-            setCurrentFaceUpCard(index);    // Set the new current face up card
+            setCurrentFaceUpCard(index);
+            return;
         } else {
-            // Check for a match
-            cardMatched = gameContent[index].content === gameContent[currentFaceUpCard].content
-            setCurrentFaceUpCard(-1);
+            // Check if there is a match
+            if (gameContent[currentFaceUpCard].content === gameContent[index].content) {
+                // Mark cards as matched
+                markMatchedCards(index);
+            } else {
+                // Flip back the cards
+                flipBackCards(index);
+            }
         }
-        // Set the new game content
+
+        // Check if match or mismatch 
+
+        setCurrentFaceUpCard(-1);
+    };
+
+    /**
+     * Flips a card at a given index
+     * @param {number} index 
+     */
+    const flipCard = (index) => {
         setGameContent(gameContent.map((card, idx) => {
             return {
                 ...card,
-                prevFaceUp: card.isFaceUp,
-                isFaceUp: idx === index ? !card.isFaceUp : card.isFaceUp,
-                isMatched: (cardMatched && (idx === index || idx === currentFaceUpCard)) || card.isMatched
+                isFaceUp: idx === index ? !card.isFaceUp : card.isFaceUp
             }
         }))
-    };
+    }
+
+    /**
+     * Marks a matched card
+     * @param {number} index 
+     */
+    const markMatchedCards = (index) => {
+        setGameContent(gameContent.map((card, idx) => {
+            return {
+                ...card,
+                isFaceUp: idx === index || idx === currentFaceUpCard ? true : card.isMatched,
+                isMatched: idx === index || idx === currentFaceUpCard ? true : card.isMatched
+            }
+        }));
+    }
+
+    /**
+     * Flips back the current face up cards
+     * @param {number} index 
+     */
+    const flipBackCards = (index) => {
+        const wait = async () => {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(true);
+                }, 600);
+            });
+            await promise;
+            setGameContent(gameContent.map((card, idx) => {
+                return {
+                    ...card,
+                    isFaceUp: idx === index || idx === currentFaceUpCard ? false : card.isFaceUp,
+                }
+            }));
+        }
+        wait();
+
+    }
 
     /**
      * Handles the restart of the game

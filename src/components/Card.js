@@ -2,6 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 
 function Card({ card, onClick, index }) {
 
+  const [prevFaceUp, setPrevFaceUp] = useState(false);
+
+  useEffect(() => {
+
+    if (prevFaceUp != card.isFaceUp) {
+      console.log(card.isFaceUp, prevFaceUp);
+      setPrevFaceUp(card.isFaceUp);
+    }
+  })
+
   return (
     <div className="scene">
       <div
