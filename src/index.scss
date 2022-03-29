@@ -134,6 +134,23 @@ body {
     font-weight: bold;
     letter-spacing: 1.5px;
     font-size: 15px;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba($color: red, $alpha: 0.8);
+    }
+    &:active {
+      background-color: red;
+    }
+    &--black {
+      background-color: black;
+      &:hover {
+        cursor: pointer;
+        background-color: rgba($color: black, $alpha: 0.8);
+      }
+      &:active {
+        background-color: black;
+      }
+    }
   }
   &__action {
     display: flex;
@@ -166,6 +183,56 @@ body {
         width: auto;
       }
     }
+  }
+}
+
+.popup {
+  z-index: 1;
+
+  &--hiden {
+    visibility: hidden;
+  }
+  &__overlay {
+    background-color: rgba($color: black, $alpha: 0.8);
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+  }
+  &__content {
+    transition: 0.5s all;
+    padding: 20px;
+    z-index: 2;
+    display: block;
+    position: absolute;
+    background-color: white;
+    min-height: 200px;
+    min-width: 30vw;
+
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    &--hiden {
+      transform: translateX(-50%) translateY(200px);
+      opacity: 0;
+    }
+  }
+  &__options {
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+  }
+  &__title > :not(:last-child) {
+    margin-bottom: 20px;
   }
 }
 

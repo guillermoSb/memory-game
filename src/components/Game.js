@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { theme } from '../utils/cardLibrary';
 import { shuffle } from '../utils/shuffle';
 import Card from './Card'
+import Popup from './Popup';
+import { useNavigate } from "react-router-dom";
 
 function Game() {
 
@@ -9,12 +11,13 @@ function Game() {
     const [gameStarted, setGameStarted] = useState(false);
     const [currentFaceUpCard, setCurrentFaceUpCard] = useState(-1);
     const [score, setScore] = useState(0);  // Game score
+    const [displayPopup, setDisplayPopup] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!gameStarted) {
-            const cardPairs = createPairs();  // Create card pairs
-            setGameContent(cardPairs);  // Set the initial content
-            setGameStarted(true);   // Set an indicator that the game has started to avoid infinite loops
+            restartGame();
         }
         // Check for cards to flip back
         if (currentFaceUpCard === -1 && gameContent.filter(card => card.isFaceUp && !card.isMatched).length == 2) {
@@ -31,10 +34,12 @@ function Game() {
             if (score < prevRecord || prevRecord === 0) {
                 localStorage.setItem('record', JSON.stringify(score));
             }
-            alert(`¡Has terminado! Tu puntaje es ${score}`)
+            setDisplayPopup(true);
 
         }
     }, [gameContent])
+
+
 
 
 
@@ -86,17 +91,46 @@ function Game() {
         }))
     };
 
+    /**
+     * Handles the restart of the game
+     */
+    const onGameRestart = () => {
+        setDisplayPopup(false);
+        restartGame();
+    }
+
+    /**
+     * Handles the exit of the game
+     */
+    const onExitGame = () => {
+        setDisplayPopup(false);
+        navigate("/");
+    }
+
+    /**
+     * Restarts the game
+     */
+    const restartGame = () => {
+        const cardPairs = createPairs();  // Create card pairs
+        setGameContent(cardPairs);  // Set the initial content
+        setGameStarted(true);   // Set an indicator that the game has started to avoid infinite loops
+        setScore(0);
+    }
+
     return (
-        <div className='game'>
-            <h1>Movimientos {score}</h1>
-            <div className="card-container">
-                {gameContent.map((card, index) => {
-                    return (
-                        <Card key={index} card={card} index={index} onClick={toggleFlip} />
-                    );
-                })}
+        <>
+            <div className='game'>
+                <h1>Movimientos {score}</h1>
+                <div className="card-container">
+                    {gameContent.map((card, index) => {
+                        return (
+                            <Card key={index} card={card} index={index} onClick={toggleFlip} />
+                        );
+                    })}
+                </div>
             </div>
-        </div>
+            <Popup displayed={displayPopup} score={score} onRestart={onGameRestart} onExit={onExitGame}></Popup>
+        </>
     );
 }
 
