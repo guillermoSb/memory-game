@@ -115,7 +115,7 @@ function Game() {
             const promise = new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve(true);
-                }, 1000);
+                }, 600);
             });
             await promise;
             setGameContent(gameContent.map((card, idx) => {
