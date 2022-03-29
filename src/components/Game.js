@@ -58,11 +58,11 @@ function Game() {
      */
     const toggleFlip = (index) => {
         // Do not allow to flip the card back
-
         if (gameContent[index].isFaceUp || gameContent[index].isMatched ||
             gameContent.filter((card) => card.isFaceUp && !card.isMatched).length >= 2) {
             return;
         }
+        setScore(score + 1);
         flipCard(index);
         // Check if there is already a card face up
         if (currentFaceUpCard === -1) {
@@ -102,13 +102,23 @@ function Game() {
      * @param {number} index 
      */
     const markMatchedCards = (index) => {
-        setGameContent(gameContent.map((card, idx) => {
-            return {
-                ...card,
-                isFaceUp: idx === index || idx === currentFaceUpCard ? true : card.isMatched,
-                isMatched: idx === index || idx === currentFaceUpCard ? true : card.isMatched
-            }
-        }));
+        const wait = async () => {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(true);
+                }, 400);
+            });
+            await promise;
+            setGameContent(gameContent.map((card, idx) => {
+                return {
+                    ...card,
+                    isFaceUp: idx === index || idx === currentFaceUpCard ? true : card.isMatched,
+                    isMatched: idx === index || idx === currentFaceUpCard ? true : card.isMatched
+                }
+            }));
+        }
+        wait();
+
     }
 
     /**
