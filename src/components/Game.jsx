@@ -23,7 +23,7 @@ function Game() {
       gameContent.map((card, idx) => ({
         ...card,
         isFaceUp: idx === index ? !card.isFaceUp : card.isFaceUp,
-      }))
+      })),
     );
   };
 
@@ -91,7 +91,7 @@ function Game() {
             idx === index || idx === currentFaceUpCard ? true : card.isMatched,
           isMatched:
             idx === index || idx === currentFaceUpCard ? true : card.isMatched,
-        }))
+        })),
       );
     };
     wait();
@@ -114,7 +114,7 @@ function Game() {
           ...card,
           isFaceUp:
             idx === index || idx === currentFaceUpCard ? false : card.isFaceUp,
-        }))
+        })),
       );
     };
     wait();
@@ -127,9 +127,9 @@ function Game() {
   const toggleFlip = (index) => {
     // Do not allow to flip the card back
     if (
-      gameContent[index].isFaceUp ||
-      gameContent[index].isMatched ||
-      gameContent.filter((card) => card.isFaceUp && !card.isMatched).length >= 2
+      gameContent[index].isFaceUp
+      || gameContent[index].isMatched
+      || gameContent.filter((card) => card.isFaceUp && !card.isMatched).length >= 2
     ) {
       return;
     }
@@ -173,7 +173,10 @@ function Game() {
   return (
     <>
       <div className="game">
-        <h1>Movimientos {score}</h1>
+        <h1>
+          Movimientos
+          {score}
+        </h1>
         <div className="card-container">
           {gameContent.map((card, index) => (
             <Card
