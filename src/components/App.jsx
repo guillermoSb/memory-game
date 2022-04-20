@@ -1,16 +1,14 @@
-import React from "react";
-import Main from "./Main";
-import { Route, Router, Routes, BrowserRouter } from "react-router-dom";
-import Game from "./Game";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Main from './Main.jsx';
+import Game from './Game.jsx';
 
 function App() {
   return (
-
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/game" element={<Game />} />
     </Routes>
-
   );
 }
 
