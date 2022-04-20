@@ -7,7 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'airbnb',
-    'prettier',
+    // 'prettier',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -21,6 +21,7 @@ module.exports = {
   ],
   rules: {
     'linebreak-style': ['error', 'unix'],
-    "import/extensions": ["error", "never", { "jsx": "always" }],
+    'import/extensions': ['error', 'never', { jsx: 'always' }], // permitir jsx
+    'operator-linebreak': ['none', 'after'],  // Prettier colisiona con airbnb en este aspecto
   },
 };

@@ -127,9 +127,9 @@ function Game() {
   const toggleFlip = (index) => {
     // Do not allow to flip the card back
     if (
-      gameContent[index].isFaceUp
-      || gameContent[index].isMatched
-      || gameContent.filter((card) => card.isFaceUp && !card.isMatched).length >= 2
+      gameContent[index].isFaceUp ||
+      gameContent[index].isMatched ||
+      gameContent.filter((card) => card.isFaceUp && !card.isMatched).length >= 2
     ) {
       return;
     }

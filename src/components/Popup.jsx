@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Popup({ score, onRestart, onExit, displayed }) {
+function Popup(
+  {
+    score, onRestart, onExit, displayed,
+  },
+) {
   return (
     <div className={`popup ${displayed ? '' : 'popup--hiden'}`}>
       <div className="popup__overlay" />

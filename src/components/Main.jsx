@@ -39,7 +39,7 @@ function Main() {
         <p>
           Este es un juego de memoria. Tienes que encontrar todos los pares de
           emojis para ganar. ¡Intenta superar tu mejor puntaje!
-          <br></br>
+          <br />
           <strong>
             {' '}
             MEJOR PUNTAJE:{' '}
