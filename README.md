@@ -4,7 +4,7 @@
 
 ## Guillermo Santos Barrios - 191517
 
-Ver proyecto https://guillermosb.github.io/web-lab08
+Ver proyecto https://guillermosb.github.io/memory-game
 
 # TODO
 
